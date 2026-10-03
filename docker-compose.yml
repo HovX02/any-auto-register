@@ -8,8 +8,10 @@ services:
     environment:
       - DISPLAY=:99
       - ACCOUNT_MANAGER_DATABASE_URL=sqlite:////app/data/account_manager.db
-      # 可选：设置访问密码，不设置则无密码保护
+      # 可选：设置访问密码。如果不设置，系统将在首次启动时自动生成并保存在 ./data/app_password.txt 中
       # - APP_PASSWORD=changeme
+      # 可选：禁用访问密码保护。设置为 true 即可完全禁用访问密码（适用于本地安全环境）
+      # - DISABLE_PASSWORD=true
       # 可选：设置 VNC 密码
       # - VNC_PASSWORD=changeme
     volumes:
