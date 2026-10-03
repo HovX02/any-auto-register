@@ -52,8 +52,10 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 # APP_PASSWORD: 运行时通过 -e APP_PASSWORD=xxx 设置
-# 不设置则无密码保护（适用于本地使用）
+# 如果不设置，首次启动将自动生成并保存在 /app/data/app_password.txt
+# 可以通过设置 -e DISABLE_PASSWORD=true 禁用密码保护
 ENV APP_PASSWORD=""
+ENV DISABLE_PASSWORD="false"
 
 EXPOSE 8000 6080 8889
 
