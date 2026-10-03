@@ -197,7 +197,7 @@ def _open_url_system_browser(url: str) -> bool:
 
 
 def generate_plus_link(
-    account: Account,
+    account: "Account",
     proxy: Optional[str] = None,
     country: str = "SG",
 ) -> str:
@@ -243,7 +243,7 @@ def generate_plus_link(
 
 
 def generate_team_link(
-    account: Account,
+    account: "Account",
     workspace_name: str = "MyTeam",
     price_interval: str = "month",
     seat_quantity: int = 5,
@@ -324,7 +324,7 @@ def open_url_incognito(url: str, cookies_str: Optional[str] = None) -> bool:
     return True
 
 
-def check_subscription_status(account: Account, proxy: Optional[str] = None) -> str:
+def check_subscription_status(account: "Account", proxy: Optional[str] = None) -> str:
     """
     检测账号当前订阅状态。
 
@@ -334,7 +334,7 @@ def check_subscription_status(account: Account, proxy: Optional[str] = None) -> 
     return fetch_subscription_status_details(account, proxy=proxy)["status"]
 
 
-def fetch_subscription_status_details(account: Account, proxy: Optional[str] = None) -> dict:
+def fetch_subscription_status_details(account: "Account", proxy: Optional[str] = None) -> dict:
     """Return normalized subscription status plus raw usage data when available."""
     if not account.access_token:
         raise ValueError("账号缺少 access_token")
